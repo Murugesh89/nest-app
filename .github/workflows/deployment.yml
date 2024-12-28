@@ -44,7 +44,7 @@ jobs:
 
        - name: Download the task definition
          run: |
-           aws ecs describe-task-definition --task-definition node-dev-task \ --query taskDefinition > task-definition.json
+           aws ecs describe-task-definition --task-definition node-dev-task --query taskDefinition > task-definition.json
 
        - name: Update the image in the task definition
          run: echo "`jq '.containerDefinitons[0].image="${{ steps.build-image.outputs.image }}"' task-definition.json`" > task-definition.json
